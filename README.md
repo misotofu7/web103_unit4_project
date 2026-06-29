@@ -4,7 +4,7 @@ Submitted by: **Kaylie Chang**
 
 About this web app: **Make your own custom cars with this website and store them in a list!**
 
-Time spent: **6** hours
+Time spent: **5** hours
 
 ## Required Features
 
@@ -18,7 +18,7 @@ The following **required** functionality is completed:
 - [x] **Users can view **multiple** features of the `CustomItem` (e.g. car) they can customize, (e.g. wheels, exterior, etc.)**
 - [x] **Each customizable feature has multiple options to choose from (e.g. exterior could be red, blue, black, etc.)**
 - [ ] **On selecting each option, the displayed visual icon for the `CustomItem` updates to match the option the user chose.**
-- [x] **The price of the `CustomItem` (e.g. car) changes dynamically as different options are selected *OR* The app displays the total price of all features.**
+- [ ] **The price of the `CustomItem` (e.g. car) changes dynamically as different options are selected *OR* The app displays the total price of all features.**
 - [ ] **The visual interface changes in response to at least one customizable feature.**
 - [x] **The user can submit their choices to save the item to the list of created `CustomItem`s.**
 - [ ] **If a user submits a feature combo that is impossible, they should receive an appropriate error message and the item should not be saved to the database.**
@@ -39,7 +39,9 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<a href="https://www.youtube.com/watch?v=-DTA6NeHomc">
+  <img style="max-width:300px;" src="client/src/assets/thumbnail.png" alt="CodePath Week 4 Walkthrough - WEB103 (Custom Car)">
+</a>
 
 <!-- Replace this with whatever GIF tool you used! -->
 Filmed with QuickTime

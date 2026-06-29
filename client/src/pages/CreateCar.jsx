@@ -55,6 +55,30 @@ const CreateCar = () => {
         }
     }
 
+    // const createCar = async (req, res) => {
+    //     try {
+    //         const { exterior_id, interior_id, wheels_id, roof_id } = req.body
+
+    //         const results = await pool.query(
+    //         `
+    //             INSERT INTO cars (exterior_id, interior_id, wheels_id, roof_id)
+    //             VALUES ($1, $2, $3, $4)
+    //             RETURNING *
+    //         `,
+    //         [
+    //             Number(exterior_id),
+    //             Number(interior_id),
+    //             Number(wheels_id),
+    //             Number(roof_id)
+    //         ]
+    //         )
+
+    //         res.status(201).json(results.rows[0])
+    //     } catch (err) {
+    //         res.status(409).json({ err: err.message })
+    //     }
+    // }
+
     useEffect(() => {
         const fetchExteriors = async () => {
             try {
