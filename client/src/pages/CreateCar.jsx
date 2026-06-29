@@ -6,13 +6,15 @@ import '../css/CreateCar.css'
 
 const CreateCar = () => {
     const [exteriors, setExteriors] = useState([])
+    const [interiors, setInteriors] = useState([])
+    const [wheels, setWheels] = useState([])
+    const [roofs, setRoofs] = useState([])
 
     const [car, setCar] = useState({
-        id: 0,
-        exterior: '',
-        interior: '',
-        wheels: '',
-        roof: ''
+        exterior_id: 0,
+        interior_id: 0,
+        wheels_id: 0,
+        roof_id: 0
     })
 
     const handleChange = (event) => {
@@ -26,9 +28,9 @@ const CreateCar = () => {
         })
     }
 
-    const createCar = (event) => {
+    const createCar = async (event) => {
         event.preventDefault()
-
+        console.log(car);
         const options = {
             method: 'POST',
             headers: {
@@ -37,29 +39,97 @@ const CreateCar = () => {
             body: JSON.stringify(car)
         }
 
-        const response = fetch('/car', options)
-        window.location = '/'
+        try {
+            const response = await fetch('http://localhost:3000/car', options)
+
+            const data = await response.json()
+            console.log('Response:', data)
+
+            if (!response.ok) {
+            throw new Error(data.err || 'Failed to create car')
+            }
+
+            window.location = '/'
+        } catch (err) {
+            console.error('Error creating car:', err.message)
+        }
     }
 
     useEffect(() => {
         const fetchExteriors = async () => {
-        try {
-            const response = await fetch('http://localhost:3000/exterior')
+            try {
+                const response = await fetch('http://localhost:3000/exterior')
 
-            if (!response.ok) {
-            throw new Error('Failed to fetch exteriors')
+                if (!response.ok) {
+                    throw new Error('Failed to fetch exteriors')
+                }
+
+                const data = await response.json()
+                setExteriors(data)
+            } catch (err) {
+                console.log("Error in getting exteriors");
             }
-
-            const data = await response.json()
-            setExteriors(data)
-        } catch (err) {
-            console.log("Error in getting exteriors");
-        }
         }
 
         fetchExteriors()
     }, [])
 
+    useEffect(() => {
+        const fetchInteriors = async () => {
+            try {
+                const response = await fetch('http://localhost:3000/interior')
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch interiors')
+                }
+
+                const data = await response.json()
+                setInteriors(data)
+            } catch (err) {
+                console.log("Error in getting interiors");
+            }
+        }
+
+        fetchInteriors()
+    }, [])
+
+    useEffect(() => {
+        const fetchWheels = async () => {
+            try {
+                const response = await fetch('http://localhost:3000/wheels')
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch wheels')
+                }
+
+                const data = await response.json()
+                setWheels(data)
+            } catch (err) {
+                console.log("Error in getting wheels");
+            }
+        }
+
+        fetchWheels()
+    }, [])
+
+    useEffect(() => {
+        const fetchRoofs = async () => {
+            try {
+                const response = await fetch('http://localhost:3000/roof')
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch roofs')
+                }
+
+                const data = await response.json()
+                setRoofs(data)
+            } catch (err) {
+                console.log("Error in getting roofs");
+            }
+        }
+
+        fetchRoofs()
+    }, [])
 
     return (
         <div className="CreateCar">
@@ -75,8 +145,9 @@ const CreateCar = () => {
                             <input
                                 id={`exterior-${exterior.id}`}
                                 type="radio"
-                                name="exterior"
+                                name="exterior_id"
                                 value={exterior.id}
+                                onClick={handleChange}
                             />
                             {exterior.name}
                             </label>
@@ -85,33 +156,60 @@ const CreateCar = () => {
                     <br/>
                     <br/>
 
-                    <label htmlFor="interior">Interior</label><br />
-                    <input
-                        type="text"
-                        id="interior"
-                        name="interior"
-                        onChange={handleChange}
-                    />
+                    <details className="dropdown">
+                        <summary>Interiors</summary>
+
+                        {interiors.map((interior) => (
+                            <label key={interior.id} htmlFor={`interior-${interior.id}`}>
+                            <input
+                                id={`interior-${interior.id}`}
+                                type="radio"
+                                name="interior_id"
+                                value={interior.id}
+                                onClick={handleChange}
+                            />
+                            {interior.name}
+                            </label>
+                        ))}
+                    </details>
                     <br/>
                     <br/>
 
-                    <label htmlFor="wheels">Wheels</label><br />
-                    <input
-                        type="text"
-                        id="wheels"
-                        name="wheels"
-                        onChange={handleChange}>
-                    </input>
+                    <details className="dropdown">
+                        <summary>Wheels</summary>
+
+                        {wheels.map((wheel) => (
+                            <label key={wheel.id} htmlFor={`wheel-${wheel.id}`}>
+                            <input
+                                id={`wheel-${wheel.id}`}
+                                type="radio"
+                                name="wheels_id"
+                                value={wheel.id}
+                                onClick={handleChange}
+                            />
+                            {wheel.name}
+                            </label>
+                        ))}
+                    </details>
                     <br/>
                     <br/>
 
-                    <label htmlFor="roof">Roof</label><br />
-                    <input
-                        type="text"
-                        id="roof"
-                        name="roof"
-                        onChange={handleChange}>
-                    </input>
+                    <details className="dropdown">
+                        <summary>Roofs</summary>
+
+                        {roofs.map((roof) => (
+                            <label key={roof.id} htmlFor={`roof-${roof.id}`}>
+                            <input
+                                id={`roof-${roof.id}`}
+                                type="radio"
+                                name="roof_id"
+                                value={roof.id}
+                                onClick={handleChange}
+                            />
+                            {roof.name}
+                            </label>
+                        ))}
+                    </details>
                     <br/>
                     <br/>
 

@@ -7,9 +7,11 @@ import cors from 'cors'
 // import the router from your routes file
 import carRoute from './routes/cars.js'
 import exteriorRoute from './routes/exteriors.js'
+import interiorRoute from './routes/interiors.js'
+import wheelsRoute from './routes/wheels.js'
+import roofRoute from './routes/roofs.js'
 
 dotenv.config()
-
 
 const PORT = process.env.PORT || 3000
 
@@ -29,7 +31,9 @@ else if (process.env.NODE_ENV === 'production') {
 // specify the api path for the server to use
 app.use('/car', carRoute);
 app.use('/exterior', exteriorRoute);
-
+app.use('/interior', interiorRoute);
+app.use('/wheels', wheelsRoute);
+app.use('/roof', roofRoute);
 
 if (process.env.NODE_ENV === 'production') {
     app.get('/*', (_, res) =>
