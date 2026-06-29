@@ -2,61 +2,84 @@ import React from 'react'
 import '../App.css'
 import { useState } from 'react'
 // import { useNavigate } from 'react-router'
-// css styling?
+import '../css/CreateCar.css'
 
 const CreateCar = () => {
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(car)
+    const [car, setCar] = useState({
+        id: 0,
+        exterior: '',
+        interior: '',
+        wheels: '',
+        roof: ''
+    })
+
+    const handleChange = (event) => {
+        const { name, value } = event.target
+
+        setCar( (prev) => {
+            return {
+                ...prev,
+                [name]:value,
+            }
+        })
     }
 
-    const response = fetch('/cars', options)
-    window.location = '/'
+    const createCar = (event) => {
+        event.preventDefault()
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(car)
+        }
+
+        const response = fetch('/car', options)
+        window.location = '/'
+    }
 
     return (
-        <div className="create">
-            <h1>Create your custom car</h1>
+        <div className="CreateCar">
+            <center><h2>Add a Car</h2></center>
 
             <div>
                 <form>
                     <label htmlFor="exterior">Exterior</label> <br />
                     <input
                         type="text"
-                        id="name"
-                        name="name"
+                        id="exterior"
+                        name="exterior"
                         onChange={handleChange}
                     />
                     <br/>
                     <br/>
 
-                    <label htmlFor="color">Interior</label><br />
+                    <label htmlFor="interior">Interior</label><br />
                     <input
                         type="text"
-                        id="color"
-                        name="color"
+                        id="interior"
+                        name="interior"
                         onChange={handleChange}
                     />
                     <br/>
                     <br/>
 
-                    <label htmlFor="accessory">Wheels</label><br />
+                    <label htmlFor="wheels">Wheels</label><br />
                     <input
                         type="text"
-                        id="accessory"
-                        name="accessory"
+                        id="wheels"
+                        name="wheels"
                         onChange={handleChange}>
                     </input>
                     <br/>
                     <br/>
 
-                    <label htmlFor="accessory">Roof</label><br />
+                    <label htmlFor="roof">Roof</label><br />
                     <input
                         type="text"
-                        id="accessory"
-                        name="accessory"
+                        id="roof"
+                        name="roof"
                         onChange={handleChange}>
                     </input>
                     <br/>
