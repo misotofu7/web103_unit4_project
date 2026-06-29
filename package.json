@@ -7,7 +7,7 @@
     "build": "cd client && vite build"
   },
   "dependencies": {
-    "@picocss/pico": "^1.5.7",
+    "@picocss/pico": "^1.5.13",
     "concurrently": "^7.6.0",
     "dotenv": "^16.6.1",
     "express": "^4.18.2",

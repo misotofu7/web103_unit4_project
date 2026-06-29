@@ -8,6 +8,10 @@ import roofsData from '../data/roofsData.js'
 const createCarTable = async () => {
     const createTableQuery = `
         DROP TABLE IF EXISTS cars;
+        DROP TABLE IF EXISTS exteriors;
+        DROP TABLE IF EXISTS interiors;
+        DROP TABLE IF EXISTS wheels;
+        DROP TABLE IF EXISTS roofs;
 
         CREATE TABLE IF NOT EXISTS exteriors (
             id SERIAL PRIMARY KEY,

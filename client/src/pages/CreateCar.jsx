@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../App.css'
 import { useState } from 'react'
 // import { useNavigate } from 'react-router'
 import '../css/CreateCar.css'
 
 const CreateCar = () => {
+    const [exteriors, setExteriors] = useState([])
+
     const [car, setCar] = useState({
         id: 0,
         exterior: '',
@@ -39,19 +41,47 @@ const CreateCar = () => {
         window.location = '/'
     }
 
+    useEffect(() => {
+        const fetchExteriors = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/exterior')
+
+            if (!response.ok) {
+            throw new Error('Failed to fetch exteriors')
+            }
+
+            const data = await response.json()
+            setExteriors(data)
+        } catch (err) {
+            console.log("Error in getting exteriors");
+        }
+        }
+
+        fetchExteriors()
+    }, [])
+
+
     return (
         <div className="CreateCar">
             <center><h2>Add a Car</h2></center>
 
             <div>
                 <form>
-                    <label htmlFor="exterior">Exterior</label> <br />
-                    <input
-                        type="text"
-                        id="exterior"
-                        name="exterior"
-                        onChange={handleChange}
-                    />
+                    <details className="dropdown">
+                        <summary>Exteriors</summary>
+
+                        {exteriors.map((exterior) => (
+                            <label key={exterior.id} htmlFor={`exterior-${exterior.id}`}>
+                            <input
+                                id={`exterior-${exterior.id}`}
+                                type="radio"
+                                name="exterior"
+                                value={exterior.id}
+                            />
+                            {exterior.name}
+                            </label>
+                        ))}
+                    </details>
                     <br/>
                     <br/>
 
