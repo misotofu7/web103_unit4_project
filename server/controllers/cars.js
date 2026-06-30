@@ -13,39 +13,6 @@ const getCars = async (req, res) => {
   }
 }
 
-// const getCars = async (req, res) => {
-//   try {
-//     const results = await pool.query(`
-//       SELECT 
-//         cars.id,
-//         cars.exterior_id,
-//         cars.interior_id,
-//         cars.wheels_id,
-//         cars.roof_id,
-
-//         exteriors.name AS exterior,
-//         interiors.name AS interior,
-//         wheels.name AS wheels,
-//         roofs.name AS roof,
-
-//         exteriors.price AS exterior_price,
-//         interiors.price AS interior_price,
-//         wheels.price AS wheels_price,
-//         roofs.price AS roof_price
-//       FROM cars
-//       JOIN exteriors ON cars.exterior_id = exteriors.id
-//       JOIN interiors ON cars.interior_id = interiors.id
-//       JOIN wheels ON cars.wheels_id = wheels.id
-//       JOIN roofs ON cars.roof_id = roofs.id
-//       ORDER BY cars.id ASC
-//     `)
-
-//     res.status(200).json(results.rows)
-//   } catch (err) {
-//     res.status(409).json({ err: err.message })
-//   }
-// }
-
 const getCarById = async (req, res) => {
   try {
     const id = parseInt(req.params.carId)
@@ -68,48 +35,6 @@ const getCarById = async (req, res) => {
     res.status(409).json({ err: err.message })
   }
 }
-
-// const getCarById = async (req, res) => {
-//   try {
-//     const id = parseInt(req.params.carId)
-
-//     const results = await pool.query(
-//       `
-//       SELECT 
-//         cars.id,
-//         cars.exterior_id,
-//         cars.interior_id,
-//         cars.wheels_id,
-//         cars.roof_id,
-
-//         exteriors.name AS exterior,
-//         interiors.name AS interior,
-//         wheels.name AS wheels,
-//         roofs.name AS roof,
-
-//         exteriors.price AS exterior_price,
-//         interiors.price AS interior_price,
-//         wheels.price AS wheels_price,
-//         roofs.price AS roof_price
-//       FROM cars
-//       JOIN exteriors ON cars.exterior_id = exteriors.id
-//       JOIN interiors ON cars.interior_id = interiors.id
-//       JOIN wheels ON cars.wheels_id = wheels.id
-//       JOIN roofs ON cars.roof_id = roofs.id
-//       WHERE cars.id = $1
-//       `,
-//       [id]
-//     )
-
-//     if (results.rows.length === 0) {
-//       return res.status(404).json({ message: 'Car not found' })
-//     }
-
-//     res.status(200).json(results.rows[0])
-//   } catch (err) {
-//     res.status(409).json({ err: err.message })
-//   }
-// }
 
 const createCar = async (req, res) => {
   try {

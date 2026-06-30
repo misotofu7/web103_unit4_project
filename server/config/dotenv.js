@@ -1,7 +1,3 @@
-// import dotenv from 'dotenv'
-
-// dotenv.config({ path: '../.env' })
-
 import dotenv from 'dotenv'
 import path from 'path'
 import { fileURLToPath } from 'url'

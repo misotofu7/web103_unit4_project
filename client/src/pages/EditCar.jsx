@@ -18,7 +18,6 @@ const EditCar = () => {
         const fetchCarById = async () => {
             const response = await fetch(`http://localhost:3000/car/${id}`)
             const data = await response.json()
-
             setCar(data)
         }
 
