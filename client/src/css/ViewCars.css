@@ -86,7 +86,7 @@
   margin: 0;
 }
 
-.edit-button {
+.details-button {
   background-color: #b00013;
   color: white;
 
@@ -102,7 +102,7 @@
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.edit-button:hover {
+.details-button:hover {
   background-color: #d00018;
   transform: scale(1.03);
 }

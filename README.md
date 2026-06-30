@@ -4,7 +4,7 @@ Submitted by: **Kaylie Chang**
 
 About this web app: **Make your own custom cars with this website and store them in a list!**
 
-Time spent: **5** hours
+Time spent: **6** hours
 
 ## Required Features
 
@@ -39,7 +39,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-<a href="https://www.youtube.com/watch?v=-DTA6NeHomc">
+<a href="https://www.youtube.com/watch?v=gsRHvT1C0iU">
   <img style="max-width:300px;" src="client/src/assets/thumbnail.png" alt="CodePath Week 4 Walkthrough - WEB103 (Custom Car)">
 </a>
 

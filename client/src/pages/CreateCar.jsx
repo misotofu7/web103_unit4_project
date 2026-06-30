@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import '../App.css'
 import { useState } from 'react'
-// import { useNavigate } from 'react-router'
 import '../css/CreateCar.css'
 
 const CreateCar = () => {
@@ -55,7 +54,6 @@ const CreateCar = () => {
             console.log('Response:', data)
 
             if (!response.ok) {
-                // throw new Error(data.err || 'Failed to create car')
                 const data = await response.json()
                 setError(data.err || 'Error creating car.')
             }

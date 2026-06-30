@@ -79,9 +79,9 @@ const ViewCars = () => {
                         <div className="car-price-section">
                             <h3>💰 ${totalPrice}</h3>
 
-                            <Link to={`/edit/${car.id}`}>
-                            <button className="edit-button" type="button">
-                                EDIT
+                            <Link to={`/customcars/${car.id}`}>
+                            <button className="details-button" type="button">
+                                DETAILS
                             </button>
                             </Link>
                         </div>
