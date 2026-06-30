@@ -44,7 +44,7 @@ Here's a walkthrough of implemented required features:
 </a>
 
 <!-- Replace this with whatever GIF tool you used! -->
-Filmed with QuickTime
+Filmed with QuickTime.
 <!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
