@@ -40,7 +40,7 @@ The following **additional** features are implemented:
 Here's a walkthrough of implemented required features:
 
 <a href="https://www.youtube.com/watch?v=gsRHvT1C0iU">
-  <img style="max-width:300px;" src="client/src/assets/thumbnail.png" alt="CodePath Week 4 Walkthrough - WEB103 (Custom Car)">
+  <img style="max-width:300px;" src="client/public/assets/thumbnail.png" alt="CodePath Week 4 Walkthrough - WEB103 (Custom Car)">
 </a>
 
 <!-- Replace this with whatever GIF tool you used! -->
