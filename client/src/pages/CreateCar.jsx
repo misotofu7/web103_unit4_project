@@ -17,6 +17,8 @@ const CreateCar = () => {
         roof_id: 0
     })
 
+    const [error, setError] = useState('')
+
     const handleChange = (event) => {
         const { name, value } = event.target
 
@@ -30,7 +32,14 @@ const CreateCar = () => {
 
     const createCar = async (event) => {
         event.preventDefault()
-        console.log(car);
+
+        if (!car.exterior_id || !car.interior_id || !car.wheels_id || !car.roof_id) {
+            setError('ERROR: Missing an input! Cannot save this custom car to the database yet. :(')
+            return
+        }
+
+        setError('')
+
         const options = {
             method: 'POST',
             headers: {
@@ -46,10 +55,12 @@ const CreateCar = () => {
             console.log('Response:', data)
 
             if (!response.ok) {
-            throw new Error(data.err || 'Failed to create car')
+                // throw new Error(data.err || 'Failed to create car')
+                const data = await response.json()
+                setError(data.err || 'Error creating car.')
             }
 
-            window.location = '/'
+            window.location = '/customcars'
         } catch (err) {
             console.error('Error creating car:', err.message)
         }
@@ -147,7 +158,7 @@ const CreateCar = () => {
                                     type="radio"
                                     name="exterior_id"
                                     value={exterior.id}
-                                    onClick={handleChange}
+                                    onChange={handleChange}
                                 />
                                 {exterior.name}
 
@@ -168,7 +179,7 @@ const CreateCar = () => {
                                     type="radio"
                                     name="interior_id"
                                     value={interior.id}
-                                    onClick={handleChange}
+                                    onChange={handleChange}
                                 />
                                 {interior.name}
 
@@ -189,7 +200,7 @@ const CreateCar = () => {
                                     type="radio"
                                     name="wheels_id"
                                     value={wheel.id}
-                                    onClick={handleChange}
+                                    onChange={handleChange}
                                 />
                                 {wheel.name}
 
@@ -210,7 +221,7 @@ const CreateCar = () => {
                                     type="radio"
                                     name="roof_id"
                                     value={roof.id}
-                                    onClick={handleChange}
+                                    onChange={handleChange}
                                 />
                                 {roof.name}
 
@@ -220,6 +231,9 @@ const CreateCar = () => {
                     </details>
                     <br/>
                     <br/>
+
+                    {/* if there's an impossible combo (sth missing, not all options selected) */}
+                    {error && <p className="form-error">{error}</p>}
 
                     <input
                         type="submit"

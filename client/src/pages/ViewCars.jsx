@@ -2,6 +2,7 @@ import React from 'react'
 import '../App.css'
 import { useState, useEffect } from 'react'
 import '../css/ViewCars.css'
+import { Link } from 'react-router-dom'
 
 const ViewCars = () => {
     const [cars, setCars] = useState([])
@@ -55,32 +56,40 @@ const ViewCars = () => {
     }, [])
 
     return (
-        <div className="cars-container">
-            {cars.map((car) => (
-                <div className="car-card" key={car.id}>
-                <h2>Car #{car.id}</h2>
+        <div className="view-cars-page">
+            <div className="cars-list">
+            {cars.map((car) => {
+                const totalPrice = car.exterior.price + car.interior.price + car.wheels.price + car.roof.price
 
-                <div className="car-option">
-                    <p>Exterior: {car.exterior.name}</p>
-                    <img src={`/assets/${car.exterior.img}`} alt={car.exterior.name} />
-                </div>
+                return (
+                    <div className="custom-car-card" key={car.id}>
+                        <div className="car-card-header">
+                        <span className="car-emoji">🏎️</span>
+                        <h2>Car #{car.id}</h2>
+                        </div>
 
-                <div className="car-option">
-                    <p>Interior: {car.interior.name}</p>
-                    <img src={`/assets/${car.interior.img}`} alt={car.interior.name} />
-                </div>
+                        <div className="car-card-content">
+                        <div className="car-options">
+                            <p><strong>Exterior:</strong> {car.exterior?.name}</p>
+                            <p><strong>Roof:</strong> {car.roof?.name}</p>
+                            <p><strong>Wheels:</strong> {car.wheels?.name}</p>
+                            <p><strong>Interior:</strong> {car.interior?.name}</p>
+                        </div>
 
-                <div className="car-option">
-                    <p>Wheels: {car.wheels.name}</p>
-                    <img src={`/assets/${car.wheels.img}`} alt={car.wheels.name} />
-                </div>
+                        <div className="car-price-section">
+                            <h3>💰 ${totalPrice}</h3>
 
-                <div className="car-option">
-                    <p>Roof: {car.roof.name}</p>
-                    <img src={`/assets/${car.roof.img}`} alt={car.roof.name} />
-                </div>
-                </div>
-            ))}
+                            <Link to={`/edit/${car.id}`}>
+                            <button className="edit-button" type="button">
+                                EDIT
+                            </button>
+                            </Link>
+                        </div>
+                        </div>
+                    </div>
+                )
+            })}
+            </div>
         </div>
     )
 }
