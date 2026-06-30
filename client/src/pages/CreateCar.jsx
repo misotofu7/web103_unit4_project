@@ -55,30 +55,6 @@ const CreateCar = () => {
         }
     }
 
-    // const createCar = async (req, res) => {
-    //     try {
-    //         const { exterior_id, interior_id, wheels_id, roof_id } = req.body
-
-    //         const results = await pool.query(
-    //         `
-    //             INSERT INTO cars (exterior_id, interior_id, wheels_id, roof_id)
-    //             VALUES ($1, $2, $3, $4)
-    //             RETURNING *
-    //         `,
-    //         [
-    //             Number(exterior_id),
-    //             Number(interior_id),
-    //             Number(wheels_id),
-    //             Number(roof_id)
-    //         ]
-    //         )
-
-    //         res.status(201).json(results.rows[0])
-    //     } catch (err) {
-    //         res.status(409).json({ err: err.message })
-    //     }
-    // }
-
     useEffect(() => {
         const fetchExteriors = async () => {
             try {
@@ -166,14 +142,16 @@ const CreateCar = () => {
 
                         {exteriors.map((exterior) => (
                             <label key={exterior.id} htmlFor={`exterior-${exterior.id}`}>
-                            <input
-                                id={`exterior-${exterior.id}`}
-                                type="radio"
-                                name="exterior_id"
-                                value={exterior.id}
-                                onClick={handleChange}
-                            />
-                            {exterior.name}
+                                <input
+                                    id={`exterior-${exterior.id}`}
+                                    type="radio"
+                                    name="exterior_id"
+                                    value={exterior.id}
+                                    onClick={handleChange}
+                                />
+                                {exterior.name}
+
+                                <img src={`/assets/${exterior.img}`} alt={exterior.name} />
                             </label>
                         ))}
                     </details>
@@ -185,14 +163,16 @@ const CreateCar = () => {
 
                         {interiors.map((interior) => (
                             <label key={interior.id} htmlFor={`interior-${interior.id}`}>
-                            <input
-                                id={`interior-${interior.id}`}
-                                type="radio"
-                                name="interior_id"
-                                value={interior.id}
-                                onClick={handleChange}
-                            />
-                            {interior.name}
+                                <input
+                                    id={`interior-${interior.id}`}
+                                    type="radio"
+                                    name="interior_id"
+                                    value={interior.id}
+                                    onClick={handleChange}
+                                />
+                                {interior.name}
+
+                                <img src={`/assets/${interior.img}`} alt={interior.name} />
                             </label>
                         ))}
                     </details>
@@ -204,14 +184,16 @@ const CreateCar = () => {
 
                         {wheels.map((wheel) => (
                             <label key={wheel.id} htmlFor={`wheel-${wheel.id}`}>
-                            <input
-                                id={`wheel-${wheel.id}`}
-                                type="radio"
-                                name="wheels_id"
-                                value={wheel.id}
-                                onClick={handleChange}
-                            />
-                            {wheel.name}
+                                <input
+                                    id={`wheel-${wheel.id}`}
+                                    type="radio"
+                                    name="wheels_id"
+                                    value={wheel.id}
+                                    onClick={handleChange}
+                                />
+                                {wheel.name}
+
+                                <img src={`/assets/${wheel.img}`} alt={wheel.name} />
                             </label>
                         ))}
                     </details>
@@ -223,14 +205,16 @@ const CreateCar = () => {
 
                         {roofs.map((roof) => (
                             <label key={roof.id} htmlFor={`roof-${roof.id}`}>
-                            <input
-                                id={`roof-${roof.id}`}
-                                type="radio"
-                                name="roof_id"
-                                value={roof.id}
-                                onClick={handleChange}
-                            />
-                            {roof.name}
+                                <input
+                                    id={`roof-${roof.id}`}
+                                    type="radio"
+                                    name="roof_id"
+                                    value={roof.id}
+                                    onClick={handleChange}
+                                />
+                                {roof.name}
+
+                                <img src={`/assets/${roof.img}`} alt={roof.name} />
                             </label>
                         ))}
                     </details>

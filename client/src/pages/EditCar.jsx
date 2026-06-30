@@ -53,38 +53,6 @@ const EditCar = () => {
         }
     }
 
-    // const updateCar = async (req, res) => {
-    //     try {
-    //         const id = parseInt(req.params.carId)
-
-    //         const exterior_id = req.body.exterior_id === undefined ? null : Number(req.body.exterior_id)
-    //         const interior_id = req.body.interior_id === undefined ? null : Number(req.body.interior_id)
-    //         const wheels_id = req.body.wheels_id === undefined ? null : Number(req.body.wheels_id)
-    //         const roof_id = req.body.roof_id === undefined ? null : Number(req.body.roof_id)
-
-    //         const results = await pool.query(
-    //             `
-    //                 UPDATE cars
-    //                 SET exterior_id = COALESCE($1, exterior_id),
-    //                     interior_id = COALESCE($2, interior_id),
-    //                     wheels_id = COALESCE($3, wheels_id),
-    //                     roof_id = COALESCE($4, roof_id)
-    //                 WHERE id = $5
-    //                 RETURNING *
-    //             `,
-    //             [exterior_id, interior_id, wheels_id, roof_id, id]
-    //         )
-
-    //         if (results.rows.length === 0) {
-    //         return res.status(404).json({ message: 'Car not found' })
-    //         }
-
-    //         res.status(200).json(results.rows[0])
-    //     } catch (err) {
-    //         res.status(409).json({ err: err.message })
-    //     }
-    // }
-
     const deleteCar = async (event) => {
         event.preventDefault()
 
@@ -100,18 +68,6 @@ const EditCar = () => {
             console.log('Error deleting car')
         }
     }
-
-    // const deleteCar = async (id) => {
-    //     const response = await fetch(`http://localhost:3000/car/${id}`, {
-    //         method: 'DELETE'
-    //     })
-
-    //     if (response.ok) {
-    //         setCars((prevCars) => prevCars.filter((car) => car.id !== id))
-    //     } else {
-    //         console.log('Error deleting car')
-    //     }
-    // }
 
     return (
         <div className="EditCar">
@@ -133,6 +89,7 @@ const EditCar = () => {
                                 onChange={handleChange}
                             />
                             {exterior.name}
+                            {exterior.img}
                             </label>
                         ))}
                     </details>
@@ -152,6 +109,7 @@ const EditCar = () => {
                                 checked={Number(car.interior_id) === interior.id}
                                 onChange={handleChange}
                             />
+                            {interior.name}
                             {interior.name}
                             </label>
                         ))}
@@ -173,6 +131,7 @@ const EditCar = () => {
                                 onChange={handleChange}
                             />
                             {wheel.name}
+                            {wheel.name}
                             </label>
                         ))}
                     </details>
@@ -192,6 +151,7 @@ const EditCar = () => {
                                 checked={Number(car.roof_id) === roof.id}
                                 onChange={handleChange}
                             />
+                            {roof.name}
                             {roof.name}
                             </label>
                         ))}

@@ -16,25 +16,29 @@ const createCarTable = async () => {
         CREATE TABLE IF NOT EXISTS exteriors (
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
-            price INT NOT NULL
+            price INT NOT NULL,
+            img VARCHAR(255) NOT NULL
         );
 
         CREATE TABLE IF NOT EXISTS interiors (
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
-            price INT NOT NULL
+            price INT NOT NULL,
+            img VARCHAR(255) NOT NULL
         );
 
         CREATE TABLE IF NOT EXISTS wheels (
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
-            price INT NOT NULL
+            price INT NOT NULL,
+            img VARCHAR(255) NOT NULL
         );
 
         CREATE TABLE IF NOT EXISTS roofs (
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
-            price INT NOT NULL
+            price INT NOT NULL,
+            img VARCHAR(255) NOT NULL
         );
 
         CREATE TABLE IF NOT EXISTS cars (
@@ -65,12 +69,13 @@ const seedCarsTable = async () => {
 
     exteriorData.forEach((exterior) => {
         const insertQuery = {
-            text: 'INSERT INTO exteriors (name, price) VALUES ($1, $2)'
+            text: 'INSERT INTO exteriors (name, price, img) VALUES ($1, $2, $3)'
         }
 
         const values = [
             exterior.name,
             exterior.price,
+            exterior.img,
         ]
 
         pool.query(insertQuery, values, (err, res) => {
@@ -85,12 +90,13 @@ const seedCarsTable = async () => {
 
     interiorData.forEach((interior) => {
         const insertQuery = {
-            text: 'INSERT INTO interiors (name, price) VALUES ($1, $2)'
+            text: 'INSERT INTO interiors (name, price, img) VALUES ($1, $2, $3)'
         }
 
         const values = [
             interior.name,
             interior.price,
+            interior.img,
         ]
 
         pool.query(insertQuery, values, (err, res) => {
@@ -105,12 +111,13 @@ const seedCarsTable = async () => {
 
     wheelsData.forEach((wheel) => {
         const insertQuery = {
-            text: 'INSERT INTO wheels (name, price) VALUES ($1, $2)'
+            text: 'INSERT INTO wheels (name, price, img) VALUES ($1, $2, $3)'
         }
 
         const values = [
             wheel.name,
             wheel.price,
+            wheel.img,
         ]
 
         pool.query(insertQuery, values, (err, res) => {
@@ -125,12 +132,13 @@ const seedCarsTable = async () => {
 
     roofsData.forEach((roof) => {
         const insertQuery = {
-            text: 'INSERT INTO roofs (name, price) VALUES ($1, $2)'
+            text: 'INSERT INTO roofs (name, price, img) VALUES ($1, $2, $3)'
         }
 
         const values = [
             roof.name,
             roof.price,
+            roof.img,
         ]
 
         pool.query(insertQuery, values, (err, res) => {
