@@ -1,6 +1,7 @@
 import React from 'react'
 import '../App.css'
 import { useState, useEffect } from 'react'
+import '../css/ViewCars.css'
 
 const ViewCars = () => {
     const [cars, setCars] = useState([])
@@ -54,25 +55,32 @@ const ViewCars = () => {
     }, [])
 
     return (
-        <div>
+        <div className="cars-container">
             {cars.map((car) => (
-                <div key={car.id}>
-                    <h2>Car #{car.id}</h2>
+                <div className="car-card" key={car.id}>
+                <h2>Car #{car.id}</h2>
+
+                <div className="car-option">
                     <p>Exterior: {car.exterior.name}</p>
                     <img src={`/assets/${car.exterior.img}`} alt={car.exterior.name} />
+                </div>
 
+                <div className="car-option">
                     <p>Interior: {car.interior.name}</p>
                     <img src={`/assets/${car.interior.img}`} alt={car.interior.name} />
+                </div>
 
+                <div className="car-option">
                     <p>Wheels: {car.wheels.name}</p>
                     <img src={`/assets/${car.wheels.img}`} alt={car.wheels.name} />
+                </div>
 
+                <div className="car-option">
                     <p>Roof: {car.roof.name}</p>
                     <img src={`/assets/${car.roof.img}`} alt={car.roof.name} />
                 </div>
+                </div>
             ))}
-
-            <img src='/assets/yellow.png' />
         </div>
     )
 }
