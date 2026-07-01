@@ -58,6 +58,10 @@ const ViewCars = () => {
         fetchCars()
     }, [])
 
+    const editCar = (id) => {
+
+    }
+
     const deleteCar = async (id) => {
         try {
             const response = await fetch(`http://localhost:3000/car/${id}`, {

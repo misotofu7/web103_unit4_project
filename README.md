@@ -24,7 +24,7 @@ The following **required** functionality is completed:
 - [x] **If a user submits a feature combo that is impossible, they should receive an appropriate error message and the item should not be saved to the database.**
 - [x] **Users can view a list of all submitted `CustomItem`s.**
 - [ ] **Users can edit a submitted `CustomItem` from the list view of submitted `CustomItem`s.**
-- [ ] **Users can delete a submitted `CustomItem` from the list view of submitted `CustomItem`s.**
+- [x] **Users can delete a submitted `CustomItem` from the list view of submitted `CustomItem`s.**
 - [ ] **Users can update or delete `CustomItem`s that have been created from the detail page.**
 
 The following **optional** features are implemented:
