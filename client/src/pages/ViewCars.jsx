@@ -2,12 +2,13 @@ import React from 'react'
 import '../App.css'
 import { useState, useEffect } from 'react'
 import '../css/ViewCars.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import CarDetails from './CarDetails'
 
 const ViewCars = () => {
     const [cars, setCars] = useState([])
     const [viewingCar, setViewingCar] = useState(true)
+    const navigate = useNavigate()
     
     useEffect(() => {
         const fetchCars = async () => {
@@ -57,6 +58,22 @@ const ViewCars = () => {
         fetchCars()
     }, [])
 
+    const deleteCar = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:3000/car/${id}`, {
+            method: 'DELETE'
+            })
+
+            if (!response.ok) {
+            throw new Error('Failed to delete car')
+            }
+
+            setCars((prevCars) => prevCars.filter((car) => car.id !== id))
+        } catch (err) {
+            console.log('Error deleting car:', err.message)
+        }
+    }
+
     return (
         <div className="view-cars-page">
             <div className="cars-list">
@@ -86,6 +103,14 @@ const ViewCars = () => {
                                         DETAILS
                                     </button>
                                 </Link>
+
+                                <Link to={`/edit/${car.id}`}>
+                                    <button className="details-button" type="button">EDIT</button>
+                                </Link>
+                
+                                <button className="details-button" type="button" onClick={() => deleteCar(car.id)}>
+                                    DELETE
+                                </button>
                             </div>
                         </div>
                     </div>
