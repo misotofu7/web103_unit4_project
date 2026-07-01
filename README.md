@@ -23,9 +23,9 @@ The following **required** functionality is completed:
 - [x] **The user can submit their choices to save the item to the list of created `CustomItem`s.**
 - [x] **If a user submits a feature combo that is impossible, they should receive an appropriate error message and the item should not be saved to the database.**
 - [x] **Users can view a list of all submitted `CustomItem`s.**
-- [ ] **Users can edit a submitted `CustomItem` from the list view of submitted `CustomItem`s.**
+- [x] **Users can edit a submitted `CustomItem` from the list view of submitted `CustomItem`s.**
 - [x] **Users can delete a submitted `CustomItem` from the list view of submitted `CustomItem`s.**
-- [ ] **Users can update or delete `CustomItem`s that have been created from the detail page.**
+- [x] **Users can update or delete `CustomItem`s that have been created from the detail page.**
 
 The following **optional** features are implemented:
 
@@ -39,7 +39,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-<a href="https://www.youtube.com/watch?v=gsRHvT1C0iU">
+<a href="https://www.youtube.com/watch?v=BmAX8XKIbDo">
   <img style="max-width:300px;" src="client/public/assets/thumbnail.png" alt="CodePath Week 4 Walkthrough - WEB103 (Custom Car)">
 </a>
 
