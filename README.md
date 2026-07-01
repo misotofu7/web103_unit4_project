@@ -4,7 +4,7 @@ Submitted by: **Kaylie Chang**
 
 About this web app: **Make your own custom cars with this website and store them in a list!**
 
-Time spent: **6** hours
+Time spent: **7** hours
 
 ## Required Features
 
