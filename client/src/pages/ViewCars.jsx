@@ -3,9 +3,11 @@ import '../App.css'
 import { useState, useEffect } from 'react'
 import '../css/ViewCars.css'
 import { Link } from 'react-router-dom'
+import CarDetails from './CarDetails'
 
 const ViewCars = () => {
     const [cars, setCars] = useState([])
+    const [viewingCar, setViewingCar] = useState(true)
     
     useEffect(() => {
         const fetchCars = async () => {
@@ -64,27 +66,27 @@ const ViewCars = () => {
                 return (
                     <div className="custom-car-card" key={car.id}>
                         <div className="car-card-header">
-                        <span className="car-emoji">🏎️</span>
-                        <h2>Car #{car.id}</h2>
-                        </div>
+                            <span className="car-emoji">🏎️</span>
+                            <h2>Car #{car.id}</h2>
+                            </div>
 
-                        <div className="car-card-content">
-                        <div className="car-options">
-                            <p><strong>Exterior:</strong> {car.exterior?.name}</p>
-                            <p><strong>Roof:</strong> {car.roof?.name}</p>
-                            <p><strong>Wheels:</strong> {car.wheels?.name}</p>
-                            <p><strong>Interior:</strong> {car.interior?.name}</p>
-                        </div>
+                            <div className="car-card-content">
+                            <div className="car-options">
+                                <p><strong>Exterior:</strong> {car.exterior?.name}</p>
+                                <p><strong>Roof:</strong> {car.roof?.name}</p>
+                                <p><strong>Wheels:</strong> {car.wheels?.name}</p>
+                                <p><strong>Interior:</strong> {car.interior?.name}</p>
+                            </div>
 
-                        <div className="car-price-section">
-                            <h3>💰 ${totalPrice}</h3>
+                            <div className="car-price-section">
+                                <h3>💰 ${totalPrice}</h3>
 
-                            <Link to={`/customcars/${car.id}`}>
-                            <button className="details-button" type="button">
-                                DETAILS
-                            </button>
-                            </Link>
-                        </div>
+                                <Link to={`/customcars/${car.id}`}>
+                                    <button className="details-button" type="button">
+                                        DETAILS
+                                    </button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 )
